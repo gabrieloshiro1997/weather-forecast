@@ -6,9 +6,9 @@ import {
   View,
   Button,
   FlatList,
-  Text,
   Keyboard,
 } from 'react-native';
+import ForecastItem from './components/ForecastItem';
 import keys from './keys';
 
 export default function App() {
@@ -16,7 +16,7 @@ export default function App() {
   const [forecasts, setForecasts] = useState([]);
 
   const url =
-    'https://api.openweathermap.org/data/2.5/forecast?lang=pt_br&units=metric&q=';
+    'https://api.openweathermap.org/data/2.5/forecast?lang=pt_br&units=metric&cnt=10&q=';
 
   const key = keys.key;
 
@@ -49,7 +49,7 @@ export default function App() {
       </View>
       <FlatList
         data={forecasts}
-        renderItem={(forecast) => <Text>{JSON.stringify(forecast)}</Text>}
+        renderItem={(forecast) => <ForecastItem forecast={forecast.item} />}
       ></FlatList>
       <StatusBar style='auto' />
     </View>
