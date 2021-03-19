@@ -27,7 +27,6 @@ export default function App() {
   const getForecasts = () => {
     setForecasts([]);
     const target = `${url}${city}&appid=${key}`;
-    console.log(target);
     fetch(target)
       .then((response) => response.json())
       .then((data) => {
